@@ -415,6 +415,7 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 
 function goToStep2() {
+  startTimer();
   if (wantsThesis) {
     document.getElementById('step-1').classList.add('hidden');
     document.getElementById('step-2').classList.remove('hidden');
@@ -440,7 +441,6 @@ function startQuestions() {
   document.getElementById('step-2').classList.add('hidden');
   document.getElementById('step-3').classList.remove('hidden');
   showQuestion(0);
-  startTimer();
 
   const seen = JSON.parse(localStorage.getItem('seenTexts') || '[]');
   if (!seen.includes(selectedText.id)) {
