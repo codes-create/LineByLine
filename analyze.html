@@ -450,31 +450,6 @@ function saveColdThesis() {
   startQuestions();
 }
 
-function goToStep2() {
-  startTimer();
-  if (wantsThesis) {
-    document.getElementById('step-1').classList.add('hidden');
-    document.getElementById('step-2').classList.remove('hidden');
-  } else {
-    startQuestions();
-  }
-}
-
-function startQuestions() {
-  activeQuestions = selectedText.questions[tier];
-  document.getElementById('text-display').textContent = selectedText.passage;
-  document.getElementById('step-1').classList.add('hidden');
-  document.getElementById('step-2').classList.add('hidden');
-  document.getElementById('step-3').classList.remove('hidden');
-  showQuestion(0);
-
-  const seen = JSON.parse(localStorage.getItem('seenTexts') || '[]');
-  if (!seen.includes(selectedText.id)) {
-    seen.push(selectedText.id);
-    localStorage.setItem('seenTexts', JSON.stringify(seen));
-  }
-  localStorage.setItem('currentText', selectedText.title);
-}
 
 function showQuestion(index) {
   const q = activeQuestions[index];
