@@ -533,23 +533,27 @@ function finishPractice() {
 
   // Send to Google Sheets silently
   const skills = localStorage.getItem('skills') || '[]';
-  fetch('https://script.google.com/macros/s/AKfycbw7jYFGdyhdqYvQMI_X_3BDuukx7tsRNTuqEh70rtZZMZOMv0qVm5yGYjbaRrTG5aAb/exec', {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      date: new Date().toLocaleDateString(),
-      tier: tier,
-      text: selectedText.title,
-      time: timeSpent,
-      coldThesis: coldThesis || 'N/A',
-      finalClaim: finalAnswer,
-      skills: skills
-    })
-  }).catch(function(err) {
-    console.log('Sheet sync failed silently:', err);
-  });
+  const allResponses = answers.map(function(a, i) {
+  return 'Q' + (i+1) + ': ' + a.answer;
+}).join(' | ');
 
+fetch('https://script.google.com/macros/s/AKfycbw7jYFGdyhdqYvQMI_X_3BDuukx7tsRNTuqEh70rtZZMZOMv0qVm5yGYjbaRrTG5aAb/exec', {
+  method: 'POST',
+  mode: 'no-cors',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    date: new Date().toLocaleDateString(),
+    tier: tier,
+    text: selectedText.title,
+    time: timeSpent,
+    coldThesis: coldThesis || 'N/A',
+    finalClaim: finalAnswer,
+    skills: JSON.parse(localStorage.getItem('skills') || '[]').join(', '),
+    responses: allResponses
+  })
+}).catch(function(err) {
+  console.log('Sheet sync failed silently:', err);
+});
   document.getElementById('step-3').classList.add('hidden');
   document.getElementById('step-4').classList.remove('hidden');
 
