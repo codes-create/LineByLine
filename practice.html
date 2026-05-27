@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LineByLine — Practice</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="page">
+
+    <div class="top-bar">
+      <div class="logo small">LineByLine</div>
+      <div class="timer-box">
+        <span id="timer">00:00</span>
+      </div>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="step" id="step-1">
+      <div class="owl-bubble">
+        <div class="owl-wrap">
+          <svg class="owl" viewBox="0 0 64 80" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="32" cy="38" rx="20" ry="22" fill="#f3eeff" stroke="#d4c8f5" stroke-width="1.5"/>
+            <ellipse cx="32" cy="22" rx="17" ry="16" fill="#f3eeff" stroke="#d4c8f5" stroke-width="1.5"/>
+            <ellipse cx="23" cy="22" rx="7" ry="8" fill="#fff" stroke="#d4c8f5" stroke-width="1"/>
+            <ellipse cx="41" cy="22" rx="7" ry="8" fill="#fff" stroke="#d4c8f5" stroke-width="1"/>
+            <circle cx="23" cy="22" r="4.5" fill="#534ab7"/>
+            <circle cx="41" cy="22" r="4.5" fill="#534ab7"/>
+            <circle cx="24.5" cy="20.5" r="1.5" fill="#fff"/>
+            <circle cx="42.5" cy="20.5" r="1.5" fill="#fff"/>
+            <polygon points="32,28 29,31 35,31" fill="#f0bcd4" stroke="#d4c8f5" stroke-width="0.5"/>
+            <ellipse cx="20" cy="40" rx="5" ry="7" fill="#e8d8fc" stroke="#d4c8f5" stroke-width="1" transform="rotate(-10 20 40)"/>
+            <ellipse cx="44" cy="40" rx="5" ry="7" fill="#e8d8fc" stroke="#d4c8f5" stroke-width="1" transform="rotate(10 44 40)"/>
+            <rect x="26" y="57" width="5" height="6" rx="2" fill="#b8aae8" stroke="#d4c8f5" stroke-width="1"/>
+            <rect x="33" y="57" width="5" height="6" rx="2" fill="#b8aae8" stroke="#d4c8f5" stroke-width="1"/>
+            <ellipse cx="28" cy="64" rx="5" ry="2" fill="#c9bbf0" stroke="#d4c8f5" stroke-width="0.8"/>
+            <ellipse cx="36" cy="64" rx="5" ry="2" fill="#c9bbf0" stroke="#d4c8f5" stroke-width="0.8"/>
+            <ellipse cx="28" cy="64" rx="3" ry="1" fill="#7f77dd" opacity="0.5"/>
+            <ellipse cx="36" cy="64" rx="3" ry="1" fill="#7f77dd" opacity="0.5"/>
+            <ellipse cx="28" cy="68" rx="4" ry="1.2" fill="#d4c8f5" opacity="0.4"/>
+            <ellipse cx="36" cy="68" rx="4" ry="1.2" fill="#d4c8f5" opacity="0.4"/>
+            <ellipse cx="28" cy="71" rx="3" ry="0.8" fill="#d4c8f5" opacity="0.25"/>
+            <ellipse cx="36" cy="71" rx="3" ry="0.8" fill="#d4c8f5" opacity="0.25"/>
+            <circle cx="14" cy="32" r="2" fill="#7f77dd" opacity="0.6"/>
+            <circle cx="50" cy="32" r="2" fill="#7f77dd" opacity="0.6"/>
+            <circle cx="12" cy="38" r="1.3" fill="#b8aae8" opacity="0.5"/>
+            <circle cx="52" cy="38" r="1.3" fill="#b8aae8" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="bubble">
+          <p id="pip-intro">Hi! Paste in the text you need to analyze and we'll break it down together!</p>
+        </div>
+      </div>
+
+      <div class="input-label">Paste your text here:</div>
+      <textarea id="user-text" placeholder="Paste the paragraph or text you need to analyze..." rows="8"></textarea>
+      <div class="word-count"><span id="word-count-num">0</span> / 600 words</div>
+      <button class="start-btn" onclick="startPractice()">Start analyzing →</button>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step hidden" id="step-2">
+      <div class="text-display" id="text-display"></div>
+      <div class="qa-thread" id="qa-thread"></div>
+
+      <div class="owl-bubble" id="pip-question-bubble">
+        <div class="owl-wrap">
+          <svg class="owl" viewBox="0 0 64 80" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="32" cy="38" rx="20" ry="22" fill="#f3eeff" stroke="#d4c8f5" stroke-width="1.5"/>
+            <ellipse cx="32" cy="22" rx="17" ry="16" fill="#f3eeff" stroke="#d4c8f5" stroke-width="1.5"/>
+            <ellipse cx="23" cy="22" rx="7" ry="8" fill="#fff" stroke="#d4c8f5" stroke-width="1"/>
+            <ellipse cx="41" cy="22" rx="7" ry="8" fill="#fff" stroke="#d4c8f5" stroke-width="1"/>
+            <circle cx="23" cy="22" r="4.5" fill="#534ab7"/>
+            <circle cx="41" cy="22" r="4.5" fill="#534ab7"/>
+            <circle cx="24.5" cy="20.5" r="1.5" fill="#fff"/>
+            <circle cx="42.5" cy="20.5" r="1.5" fill="#fff"/>
+            <polygon points="32,28 29,31 35,31" fill="#f0bcd4" stroke="#d4c8f5" stroke-width="0.5"/>
+            <ellipse cx="20" cy="40" rx="5" ry="7" fill="#e8d8fc" stroke="#d4c8f5" stroke-width="1" transform="rotate(-10 20 40)"/>
+            <ellipse cx="44" cy="40" rx="5" ry="7" fill="#e8d8fc" stroke="#d4c8f5" stroke-width="1" transform="rotate(10 44 40)"/>
+            <rect x="26" y="57" width="5" height="6" rx="2" fill="#b8aae8" stroke="#d4c8f5" stroke-width="1"/>
+            <rect x="33" y="57" width="5" height="6" rx="2" fill="#b8aae8" stroke="#d4c8f5" stroke-width="1"/>
+            <ellipse cx="28" cy="64" rx="5" ry="2" fill="#c9bbf0" stroke="#d4c8f5" stroke-width="0.8"/>
+            <ellipse cx="36" cy="64" rx="5" ry="2" fill="#c9bbf0" stroke="#d4c8f5" stroke-width="0.8"/>
+            <ellipse cx="28" cy="64" rx="3" ry="1" fill="#7f77dd" opacity="0.5"/>
+            <ellipse cx="36" cy="64" rx="3" ry="1" fill="#7f77dd" opacity="0.5"/>
+            <ellipse cx="28" cy="68" rx="4" ry="1.2" fill="#d4c8f5" opacity="0.4"/>
+            <ellipse cx="36" cy="68" rx="4" ry="1.2" fill="#d4c8f5" opacity="0.4"/>
+            <ellipse cx="28" cy="71" rx="3" ry="0.8" fill="#d4c8f5" opacity="0.25"/>
+            <ellipse cx="36" cy="71" rx="3" ry="0.8" fill="#d4c8f5" opacity="0.25"/>
+            <circle cx="14" cy="32" r="2" fill="#7f77dd" opacity="0.6"/>
+            <circle cx="50" cy="32" r="2" fill="#7f77dd" opacity="0.6"/>
+            <circle cx="12" cy="38" r="1.3" fill="#b8aae8" opacity="0.5"/>
+            <circle cx="52" cy="38" r="1.3" fill="#b8aae8" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="bubble">
+          <p id="pip-question">...</p>
+        </div>
+      </div>
+
+      <textarea id="user-answer" placeholder="Type your response here... take your time!" rows="5"></textarea>
+      <button class="start-btn" onclick="nextQuestion()">Next →</button>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step hidden" id="step-3">
+      <div class="done-screen">
+        <div class="owl-wrap" style="margin: 0 auto 1rem;">
+          <svg class="owl" viewBox="0 0 64 80" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="32" cy="38" rx="20" ry="22" fill="#f3eeff" stroke="#d4c8f5" stroke-width="1.5"/>
+            <ellipse cx="32" cy="22" rx="17" ry="16" fill="#f3eeff" stroke="#d4c8f5" stroke-width="1.5"/>
+            <ellipse cx="23" cy="22" rx="7" ry="8" fill="#fff" stroke="#d4c8f5" stroke-width="1"/>
+            <ellipse cx="41" cy="22" rx="7" ry="8" fill="#fff" stroke="#d4c8f5" stroke-width="1"/>
+            <circle cx="23" cy="22" r="4.5" fill="#534ab7"/>
+            <circle cx="41" cy="22" r="4.5" fill="#534ab7"/>
+            <circle cx="24.5" cy="20.5" r="1.5" fill="#fff"/>
+            <circle cx="42.5" cy="20.5" r="1.5" fill="#fff"/>
+            <polygon points="32,28 29,31 35,31" fill="#f0bcd4" stroke="#d4c8f5" stroke-width="0.5"/>
+            <ellipse cx="20" cy="40" rx="5" ry="7" fill="#e8d8fc" stroke="#d4c8f5" stroke-width="1" transform="rotate(-10 20 40)"/>
+            <ellipse cx="44" cy="40" rx="5" ry="7" fill="#e8d8fc" stroke="#d4c8f5" stroke-width="1" transform="rotate(10 44 40)"/>
+            <rect x="26" y="57" width="5" height="6" rx="2" fill="#b8aae8" stroke="#d4c8f5" stroke-width="1"/>
+            <rect x="33" y="57" width="5" height="6" rx="2" fill="#b8aae8" stroke="#d4c8f5" stroke-width="1"/>
+            <ellipse cx="28" cy="64" rx="5" ry="2" fill="#c9bbf0" stroke="#d4c8f5" stroke-width="0.8"/>
+            <ellipse cx="36" cy="64" rx="5" ry="2" fill="#c9bbf0" stroke="#d4c8f5" stroke-width="0.8"/>
+            <ellipse cx="28" cy="64" rx="3" ry="1" fill="#7f77dd" opacity="0.5"/>
+            <ellipse cx="36" cy="64" rx="3" ry="1" fill="#7f77dd" opacity="0.5"/>
+            <ellipse cx="28" cy="68" rx="4" ry="1.2" fill="#d4c8f5" opacity="0.4"/>
+            <ellipse cx="36" cy="68" rx="4" ry="1.2" fill="#d4c8f5" opacity="0.4"/>
+            <ellipse cx="28" cy="71" rx="3" ry="0.8" fill="#d4c8f5" opacity="0.25"/>
+            <ellipse cx="36" cy="71" rx="3" ry="0.8" fill="#d4c8f5" opacity="0.25"/>
+            <circle cx="14" cy="32" r="2" fill="#7f77dd" opacity="0.6"/>
+            <circle cx="50" cy="32" r="2" fill="#7f77dd" opacity="0.6"/>
+            <circle cx="12" cy="38" r="1.3" fill="#b8aae8" opacity="0.5"/>
+            <circle cx="52" cy="38" r="1.3" fill="#b8aae8" opacity="0.5"/>
+          </svg>
+        </div>
+        <h2 class="done-title">Amazing work! 🎉</h2>
+        <p class="done-msg" id="done-msg"></p>
+        <div class="done-time">You finished in <strong id="final-time"></strong></div>
+        <button class="start-btn" onclick="window.location.href='index.html'">Go again →</button>
+      </div>
+    </div>
+
+  </div>
+
+<script>
+  // Get saved info from homepage
+  const grade = localStorage.getItem('grade') || '9th';
+  const skills = JSON.parse(localStorage.getItem('skills') || '[]');
+
+  // Update Pip's intro with grade
+  document.getElementById('pip-intro').textContent =
+    "Hi again! I see you're in " + grade + " — let's work on some analysis together. Paste in the text you're working with and we'll break it down step by step!";
+
+  // Word count
+  document.getElementById('user-text').addEventListener('input', function() {
+const trimmed = this.value.trim();
+const words = trimmed === '' ? 0 : trimmed.split(/\s+/).filter(w => w.length > 0).length;    document.getElementById('word-count-num').textContent = words;
+    if (words > 600) {
+      this.style.borderColor = '#e24b4a';
+      document.getElementById('word-count-num').style.color = '#e24b4a';
+    } else {
+      this.style.borderColor = '#d4c8f5';
+      document.getElementById('word-count-num').style.color = '#9d96cc';
+    }
+  });
+
+  // Timer
+  let seconds = 0;
+  let timerInterval = null;
+
+  function startTimer() {
+    timerInterval = setInterval(function() {
+      seconds++;
+      const mins = String(Math.floor(seconds / 60)).padStart(2, '0');
+      const secs = String(seconds % 60).padStart(2, '0');
+      document.getElementById('timer').textContent = mins + ':' + secs;
+    }, 1000);
+  }
+
+  function stopTimer() {
+    clearInterval(timerInterval);
+  }
+
+  function getFormattedTime() {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    if (mins === 0) return secs + ' seconds';
+    if (secs === 0) return mins + ' minutes';
+    return mins + ' min ' + secs + ' sec';
+  }
+
+  // Questions
+  const strugglesWith = function(skill) { return skills.includes(skill); };
+
+  const questions = [
+    {
+      id: 'main-idea',
+      text: "Let's start easy! What do you think this text is mainly about? Just say it in your own words, no pressure."
+    },
+    {
+      id: 'evidence',
+      text: strugglesWith('Finding evidence')
+        ? "Good! Now look back at the text — what specific word, line, or moment made you think that? Quote it or describe it!"
+        : "Nice! What part of the text stood out to you the most, and why?"
+    },
+    {
+      id: 'analysis',
+      text: strugglesWith('Analysis & commentary')
+        ? "Great find! Now here's the big question — WHY does that moment matter? What do you think the author is trying to tell us through it?"
+        : "Interesting! Why do you think the author chose to include that? What does it reveal?"
+    },
+    {
+      id: 'thesis',
+      text: strugglesWith('Writing a thesis')
+        ? "You're so close! Now let's put it all together. Try writing ONE sentence that says: what the text is about + what the author is trying to say. That's your claim!"
+        : "Almost there! Can you write one strong sentence that captures your main argument about this text?"
+    },
+    {
+      id: 'reflect',
+      text: "Last one! How do you feel about your claim? Is there anything you'd want to add or change? Or are you happy with it?"
+    }
+  ];
+
+  let currentQ = 0;
+  let answers = [];
+
+  function startPractice() {
+    const text = document.getElementById('user-text').value.trim();
+    const words = text === '' ? 0 : text.split(/\s+/).length;
+
+    if (text === '') {
+      alert('Please paste in a text first!');
+      return;
+    }
+    if (words > 600) {
+      alert('Your text is over 600 words. Please shorten it a little!');
+      return;
+    }
+
+    document.getElementById('text-display').textContent = text;
+    document.getElementById('step-1').classList.add('hidden');
+    document.getElementById('step-2').classList.remove('hidden');
+    document.getElementById('pip-question').textContent = questions[0].text;
+    startTimer();
+    localStorage.setItem('currentText', 'Bring your own text');
+  }
+
+  function nextQuestion() {
+    const answerBox = document.getElementById('user-answer');
+    const answer = answerBox.value.trim();
+
+    if (answer === '') {
+      alert("Don't leave Pip hanging! Write something, even just a few words.");
+      return;
+    }
+
+    answers.push({ question: questions[currentQ].text, answer: answer });
+
+    const thread = document.getElementById('qa-thread');
+    const entry = document.createElement('div');
+    entry.className = 'thread-entry';
+    entry.innerHTML =
+      '<div class="thread-q">Pip asked: <em>' + questions[currentQ].text + '</em></div>' +
+      '<div class="thread-a">You wrote: ' + answer + '</div>';
+    thread.appendChild(entry);
+
+    answerBox.value = '';
+    currentQ++;
+
+    if (currentQ < questions.length) {
+      document.getElementById('pip-question').textContent = questions[currentQ].text;
+      document.getElementById('pip-question-bubble').scrollIntoView({ behavior: 'smooth' });
+    } else {
+      finishPractice  ();
+    }
+  }
+
+  function finishPractice() {
+    stopTimer();
+    // Save session to history
+const sessionHistory = JSON.parse(localStorage.getItem('sessionHistory') || '[]');
+sessionHistory.push({
+  date: new Date().toISOString(),
+  text: localStorage.getItem('currentText') || 'Bring your own text',
+  time: getFormattedTime(),
+  claim: answers[answers.length - 1] ? answers[answers.length - 1].answer : ''
+});
+localStorage.setItem('sessionHistory', JSON.stringify(sessionHistory));
+    document.getElementById('step-2').classList.add('hidden');
+    document.getElementById('step-3').classList.remove('hidden');
+
+    const claimAnswer = answers.find(function(a) {
+      return a.question.includes('ONE sentence') || a.question.includes('one strong sentence');
+    });
+
+    const claimText = claimAnswer
+      ? 'Here\'s the claim you built: "' + claimAnswer.answer + '"'
+      : "You worked through the whole analysis — that takes real skill!";
+
+    document.getElementById('done-msg').textContent = claimText;
+    document.getElementById('final-time').textContent = getFormattedTime();
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LineByLine</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- Name popup OUTSIDE the page div -->
+<div class="popup-overlay hidden" id="name-popup">
+  <div class="popup-box">
+    <div class="owl-wrap" style="margin: 0 auto 1rem;">
+      <svg class="owl" viewBox="0 0 64 80" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="32" cy="38" rx="20" ry="22" fill="#f3eeff" stroke="#d4c8f5" stroke-width="1.5"/>
+        <ellipse cx="32" cy="22" rx="17" ry="16" fill="#f3eeff" stroke="#d4c8f5" stroke-width="1.5"/>
+        <ellipse cx="23" cy="22" rx="7" ry="8" fill="#fff" stroke="#d4c8f5" stroke-width="1"/>
+        <ellipse cx="41" cy="22" rx="7" ry="8" fill="#fff" stroke="#d4c8f5" stroke-width="1"/>
+        <circle cx="23" cy="22" r="4.5" fill="#534ab7"/>
+        <circle cx="41" cy="22" r="4.5" fill="#534ab7"/>
+        <circle cx="24.5" cy="20.5" r="1.5" fill="#fff"/>
+        <circle cx="42.5" cy="20.5" r="1.5" fill="#fff"/>
+        <polygon points="32,28 29,31 35,31" fill="#f0bcd4" stroke="#d4c8f5" stroke-width="0.5"/>
+        <ellipse cx="20" cy="40" rx="5" ry="7" fill="#e8d8fc" stroke="#d4c8f5" stroke-width="1" transform="rotate(-10 20 40)"/>
+        <ellipse cx="44" cy="40" rx="5" ry="7" fill="#e8d8fc" stroke="#d4c8f5" stroke-width="1" transform="rotate(10 44 40)"/>
+        <rect x="26" y="57" width="5" height="6" rx="2" fill="#b8aae8" stroke="#d4c8f5" stroke-width="1"/>
+        <rect x="33" y="57" width="5" height="6" rx="2" fill="#b8aae8" stroke="#d4c8f5" stroke-width="1"/>
+        <ellipse cx="28" cy="64" rx="5" ry="2" fill="#c9bbf0" stroke="#d4c8f5" stroke-width="0.8"/>
+        <ellipse cx="36" cy="64" rx="5" ry="2" fill="#c9bbf0" stroke="#d4c8f5" stroke-width="0.8"/>
+        <ellipse cx="28" cy="64" rx="3" ry="1" fill="#7f77dd" opacity="0.5"/>
+        <ellipse cx="36" cy="64" rx="3" ry="1" fill="#7f77dd" opacity="0.5"/>
+        <ellipse cx="28" cy="68" rx="4" ry="1.2" fill="#d4c8f5" opacity="0.4"/>
+        <ellipse cx="36" cy="68" rx="4" ry="1.2" fill="#d4c8f5" opacity="0.4"/>
+        <ellipse cx="28" cy="71" rx="3" ry="0.8" fill="#d4c8f5" opacity="0.25"/>
+        <ellipse cx="36" cy="71" rx="3" ry="0.8" fill="#d4c8f5" opacity="0.25"/>
+        <circle cx="14" cy="32" r="2" fill="#7f77dd" opacity="0.6"/>
+        <circle cx="50" cy="32" r="2" fill="#7f77dd" opacity="0.6"/>
+        <circle cx="12" cy="38" r="1.3" fill="#b8aae8" opacity="0.5"/>
+        <circle cx="52" cy="38" r="1.3" fill="#b8aae8" opacity="0.5"/>
+      </svg>
+    </div>
+    <h2 class="popup-title">Hi there! I'm Pip! &#127775;</h2>
+    <p class="popup-msg">Before we begin, what should I call you?</p>
+    <input type="text" class="name-input" id="name-input" placeholder="Your first name..." maxlength="30" />
+    <button class="start-btn" onclick="saveName()">Nice to meet you! →</button>
+  </div>
+</div>
+
+<div class="page">
+
+  <div class="progress-bar-top">
+    <button class="progress-link" onclick="window.location.href='progress.html'">📊 My Progress</button>
+  </div>
+
+  <div class="logo">LineByLine</div>
+  <div class="tagline">Build your writing confidence, one line at a time.</div>
+
+  <div class="owl-bubble">
+    <div class="owl-wrap">
+      <svg class="owl" viewBox="0 0 64 80" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="32" cy="38" rx="20" ry="22" fill="#f3eeff" stroke="#d4c8f5" stroke-width="1.5"/>
+        <ellipse cx="32" cy="22" rx="17" ry="16" fill="#f3eeff" stroke="#d4c8f5" stroke-width="1.5"/>
+        <ellipse cx="23" cy="22" rx="7" ry="8" fill="#fff" stroke="#d4c8f5" stroke-width="1"/>
+        <ellipse cx="41" cy="22" rx="7" ry="8" fill="#fff" stroke="#d4c8f5" stroke-width="1"/>
+        <circle cx="23" cy="22" r="4.5" fill="#534ab7"/>
+        <circle cx="41" cy="22" r="4.5" fill="#534ab7"/>
+        <circle cx="24.5" cy="20.5" r="1.5" fill="#fff"/>
+        <circle cx="42.5" cy="20.5" r="1.5" fill="#fff"/>
+        <polygon points="32,28 29,31 35,31" fill="#f0bcd4" stroke="#d4c8f5" stroke-width="0.5"/>
+        <ellipse cx="20" cy="40" rx="5" ry="7" fill="#e8d8fc" stroke="#d4c8f5" stroke-width="1" transform="rotate(-10 20 40)"/>
+        <ellipse cx="44" cy="40" rx="5" ry="7" fill="#e8d8fc" stroke="#d4c8f5" stroke-width="1" transform="rotate(10 44 40)"/>
+        <rect x="26" y="57" width="5" height="6" rx="2" fill="#b8aae8" stroke="#d4c8f5" stroke-width="1"/>
+        <rect x="33" y="57" width="5" height="6" rx="2" fill="#b8aae8" stroke="#d4c8f5" stroke-width="1"/>
+        <ellipse cx="28" cy="64" rx="5" ry="2" fill="#c9bbf0" stroke="#d4c8f5" stroke-width="0.8"/>
+        <ellipse cx="36" cy="64" rx="5" ry="2" fill="#c9bbf0" stroke="#d4c8f5" stroke-width="0.8"/>
+        <ellipse cx="28" cy="64" rx="3" ry="1" fill="#7f77dd" opacity="0.5"/>
+        <ellipse cx="36" cy="64" rx="3" ry="1" fill="#7f77dd" opacity="0.5"/>
+        <ellipse cx="28" cy="68" rx="4" ry="1.2" fill="#d4c8f5" opacity="0.4"/>
+        <ellipse cx="36" cy="68" rx="4" ry="1.2" fill="#d4c8f5" opacity="0.4"/>
+        <ellipse cx="28" cy="71" rx="3" ry="0.8" fill="#d4c8f5" opacity="0.25"/>
+        <ellipse cx="36" cy="71" rx="3" ry="0.8" fill="#d4c8f5" opacity="0.25"/>
+        <circle cx="14" cy="32" r="2" fill="#7f77dd" opacity="0.6"/>
+        <circle cx="50" cy="32" r="2" fill="#7f77dd" opacity="0.6"/>
+        <circle cx="12" cy="38" r="1.3" fill="#b8aae8" opacity="0.5"/>
+        <circle cx="52" cy="38" r="1.3" fill="#b8aae8" opacity="0.5"/>
+      </svg>
+    </div>
+    <div class="bubble">
+      <p id="pip-greeting">Hi there! I'm <strong>Pip</strong>, your writing guide! &#127775;<br>
+      Before we begin, let me learn a little about you so I can help you best!</p>
+    </div>
+  </div>
+
+  <div class="section-label">What grade are you in?</div>
+  <p class="tier-note">Not sure? If the questions feel too easy, move up a level — no pressure!</p>
+  <div class="grade-row" id="grades">
+  <button class="grade-btn" onclick="selectOne('grade-btn', this)" data-tier="elementary">2nd – 5th</button>
+  <button class="grade-btn" onclick="selectOne('grade-btn', this)" data-tier="middle">6th – 8th</button>
+  <button class="grade-btn" onclick="selectOne('grade-btn', this)" data-tier="upper">9th – 10th</button>
+  <button class="grade-btn" onclick="selectOne('grade-btn', this)" data-tier="advanced">11th – 12th</button>
+</div>
+
+  <hr class="divider" />
+
+  <div class="section-label">What do you find hardest? (pick all that apply)</div>
+  <div class="skill-grid">
+    <button class="skill-chip" onclick="toggleChip(this)">Writing a thesis</button>
+    <button class="skill-chip" onclick="toggleChip(this)">Finding evidence</button>
+    <button class="skill-chip" onclick="toggleChip(this)">Analysis & commentary</button>
+    <button class="skill-chip" onclick="toggleChip(this)">Structuring paragraphs</button>
+    <button class="skill-chip" onclick="toggleChip(this)">Responding to a prompt</button>
+    <button class="skill-chip" onclick="toggleChip(this)">Introductions & conclusions</button>
+    <button class="skill-chip" onclick="toggleChip(this)">Staying on topic</button>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="section-label">Choose a mode</div>
+  <div class="mode-cards">
+    <button class="mode-card" onclick="selectOne('mode-card', this)">
+      <span class="mode-icon">&#128196;</span>
+      <div class="mode-title">Analyze a text</div>
+      <div class="mode-desc">We give you a passage. You analyze it with Pip's guidance.</div>
+    </button>
+    <button class="mode-card" onclick="selectOne('mode-card', this)">
+      <span class="mode-icon">&#9997;&#65039;</span>
+      <div class="mode-title">Bring your own text</div>
+      <div class="mode-desc">Paste in your own text or prompt and get tailored questions.</div>
+    </button>
+  </div>
+
+  <button class="start-btn" onclick="handleStart()">Let's begin →</button>
+
+</div>
+
+<script>
+  window.addEventListener('DOMContentLoaded', function() {
+    const name = localStorage.getItem('userName');
+    if (!name) {
+      document.getElementById('name-popup').classList.remove('hidden');
+    } else {
+      greetUser(name);
+    }
+
+    document.getElementById('name-input').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') saveName();
+    });
+  });
+
+  function saveName() {
+    const input = document.getElementById('name-input').value.trim();
+    if (input === '') {
+      alert('Please enter your name!');
+      return;
+    }
+    localStorage.setItem('userName', input);
+    document.getElementById('name-popup').classList.add('hidden');
+    greetUser(input);
+  }
+
+  function greetUser(name) {
+    const history = JSON.parse(localStorage.getItem('sessionHistory') || '[]');
+    const streak = getStreak();
+    let greeting = '';
+    if (history.length === 0) {
+      greeting = 'Hi, <strong>' + name + '</strong>! I\'m <strong>Pip</strong>, your writing guide! &#127775;<br>Let\'s build your confidence together, one line at a time!';
+    } else if (streak >= 3) {
+      greeting = 'Welcome back, <strong>' + name + '</strong>! &#127775; You\'re on a <strong>' + streak + ' day streak</strong> — that\'s incredible!';
+    } else {
+      greeting = 'Welcome back, <strong>' + name + '</strong>! &#127775; Ready to keep building those skills?';
+    }
+    document.getElementById('pip-greeting').innerHTML = greeting;
+  }
+
+  function getStreak() {
+    const history = JSON.parse(localStorage.getItem('sessionHistory') || '[]');
+    if (history.length === 0) return 0;
+    const today = new Date().toDateString();
+    const dates = [...new Set(history.map(s => new Date(s.date).toDateString()))];
+    dates.sort((a, b) => new Date(b) - new Date(a));
+    if (dates[0] !== today && dates[0] !== new Date(Date.now() - 86400000).toDateString()) return 0;
+    let streak = 1;
+    for (let i = 1; i < dates.length; i++) {
+      const diff = (new Date(dates[i-1]) - new Date(dates[i])) / 86400000;
+      if (diff === 1) streak++;
+      else break;
+    }
+    return streak;
+  }
+
+  function selectOne(className, clicked) {
+    document.querySelectorAll('.' + className).forEach(function(btn) {
+      btn.classList.remove('active');
+    });
+    clicked.classList.add('active');
+  }
+
+  function toggleChip(clicked) {
+    clicked.classList.toggle('active');
+  }
+
+  function handleStart() {
+    const grade = document.querySelector('.grade-btn.active');
+    const mode = document.querySelector('.mode-card.active');
+    if (!grade || !mode) {
+      alert('Please select your grade and a mode before continuing!');
+      return;
+    }
+    const selectedSkills = [...document.querySelectorAll('.skill-chip.active')]
+      .map(function(chip) { return chip.textContent; });
+    localStorage.setItem('grade', grade.textContent);
+    localStorage.setItem('tier', grade.dataset.tier);
+    localStorage.setItem('skills', JSON.stringify(selectedSkills));
+    const modeName = mode.querySelector('.mode-title').textContent;
+    if (modeName === 'Analyze a text') {
+      window.location.href = 'analyze.html';
+    } else {
+      window.location.href = 'practice.html';
+    }
+  }
+</script>
+
+</body>
+</html>

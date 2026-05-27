@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LineByLine — Analyze a Text</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="page">
+
+  <div class="top-bar">
+    <div class="logo small" style="font-family: 'Quicksand', sans-serif;">LineByLine</div>
+    <div class="timer-box"><span id="timer">00:00</span></div>
+  </div>
+
+  <!-- STEP 1: Read the text -->
+  <div class="step" id="step-1">
+    <div class="owl-bubble">
+      <div class="owl-wrap">
+        <svg class="owl" viewBox="0 0 64 80" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="32" cy="38" rx="20" ry="22" fill="#f3eeff" stroke="#d4c8f5" stroke-width="1.5"/>
+          <ellipse cx="32" cy="22" rx="17" ry="16" fill="#f3eeff" stroke="#d4c8f5" stroke-width="1.5"/>
+          <ellipse cx="23" cy="22" rx="7" ry="8" fill="#fff" stroke="#d4c8f5" stroke-width="1"/>
+          <ellipse cx="41" cy="22" rx="7" ry="8" fill="#fff" stroke="#d4c8f5" stroke-width="1"/>
+          <circle cx="23" cy="22" r="4.5" fill="#534ab7"/>
+          <circle cx="41" cy="22" r="4.5" fill="#534ab7"/>
+          <circle cx="24.5" cy="20.5" r="1.5" fill="#fff"/>
+          <circle cx="42.5" cy="20.5" r="1.5" fill="#fff"/>
+          <polygon points="32,28 29,31 35,31" fill="#f0bcd4" stroke="#d4c8f5" stroke-width="0.5"/>
+          <ellipse cx="20" cy="40" rx="5" ry="7" fill="#e8d8fc" stroke="#d4c8f5" stroke-width="1" transform="rotate(-10 20 40)"/>
+          <ellipse cx="44" cy="40" rx="5" ry="7" fill="#e8d8fc" stroke="#d4c8f5" stroke-width="1" transform="rotate(10 44 40)"/>
+          <rect x="26" y="57" width="5" height="6" rx="2" fill="#b8aae8" stroke="#d4c8f5" stroke-width="1"/>
+          <rect x="33" y="57" width="5" height="6" rx="2" fill="#b8aae8" stroke="#d4c8f5" stroke-width="1"/>
+          <ellipse cx="28" cy="64" rx="5" ry="2" fill="#c9bbf0" stroke="#d4c8f5" stroke-width="0.8"/>
+          <ellipse cx="36" cy="64" rx="5" ry="2" fill="#c9bbf0" stroke="#d4c8f5" stroke-width="0.8"/>
+          <ellipse cx="28" cy="64" rx="3" ry="1" fill="#7f77dd" opacity="0.5"/>
+          <ellipse cx="36" cy="64" rx="3" ry="1" fill="#7f77dd" opacity="0.5"/>
+          <ellipse cx="28" cy="68" rx="4" ry="1.2" fill="#d4c8f5" opacity="0.4"/>
+          <ellipse cx="36" cy="68" rx="4" ry="1.2" fill="#d4c8f5" opacity="0.4"/>
+          <ellipse cx="28" cy="71" rx="3" ry="0.8" fill="#d4c8f5" opacity="0.25"/>
+          <ellipse cx="36" cy="71" rx="3" ry="0.8" fill="#d4c8f5" opacity="0.25"/>
+          <circle cx="14" cy="32" r="2" fill="#7f77dd" opacity="0.6"/>
+          <circle cx="50" cy="32" r="2" fill="#7f77dd" opacity="0.6"/>
+          <circle cx="12" cy="38" r="1.3" fill="#b8aae8" opacity="0.5"/>
+          <circle cx="52" cy="38" r="1.3" fill="#b8aae8" opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="bubble">
+        <p id="pip-intro">Hi! I've picked a text for you — take your time reading it, then hit the button when you're ready!</p>
+      </div>
+    </div>
+    <div class="text-preview-box" id="text-preview"></div>
+    <div class="text-source" id="text-source"></div>
+    <button class="start-btn" onclick="goToStep2()">I've read it, let's go! →</button>
+  </div>
+
+  <!-- STEP 2: Cold thesis (only if writing a thesis selected) -->
+  <div class="step hidden" id="step-2">
+    <div class="text-preview-box" id="text-preview-2"></div>
+    <div class="owl-bubble">
+      <div class="owl-wrap">
+        <svg class="owl" viewBox="0 0 64 80" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="32" cy="38" rx="20" ry="22" fill="#f3eeff" stroke="#d4c8f5" stroke-width="1.5"/>
+          <ellipse cx="32" cy="22" rx="17" ry="16" fill="#f3eeff" stroke="#d4c8f5" stroke-width="1.5"/>
+          <ellipse cx="23" cy="22" rx="7" ry="8" fill="#fff" stroke="#d4c8f5" stroke-width="1"/>
+          <ellipse cx="41" cy="22" rx="7" ry="8" fill="#fff" stroke="#d4c8f5" stroke-width="1"/>
+          <circle cx="23" cy="22" r="4.5" fill="#534ab7"/>
+          <circle cx="41" cy="22" r="4.5" fill="#534ab7"/>
+          <circle cx="24.5" cy="20.5" r="1.5" fill="#fff"/>
+          <circle cx="42.5" cy="20.5" r="1.5" fill="#fff"/>
+          <polygon points="32,28 29,31 35,31" fill="#f0bcd4" stroke="#d4c8f5" stroke-width="0.5"/>
+          <ellipse cx="20" cy="40" rx="5" ry="7" fill="#e8d8fc" stroke="#d4c8f5" stroke-width="1" transform="rotate(-10 20 40)"/>
+          <ellipse cx="44" cy="40" rx="5" ry="7" fill="#e8d8fc" stroke="#d4c8f5" stroke-width="1" transform="rotate(10 44 40)"/>
+          <rect x="26" y="57" width="5" height="6" rx="2" fill="#b8aae8" stroke="#d4c8f5" stroke-width="1"/>
+          <rect x="33" y="57" width="5" height="6" rx="2" fill="#b8aae8" stroke="#d4c8f5" stroke-width="1"/>
+          <ellipse cx="28" cy="64" rx="5" ry="2" fill="#c9bbf0" stroke="#d4c8f5" stroke-width="0.8"/>
+          <ellipse cx="36" cy="64" rx="5" ry="2" fill="#c9bbf0" stroke="#d4c8f5" stroke-width="0.8"/>
+          <ellipse cx="28" cy="64" rx="3" ry="1" fill="#7f77dd" opacity="0.5"/>
+          <ellipse cx="36" cy="64" rx="3" ry="1" fill="#7f77dd" opacity="0.5"/>
+          <ellipse cx="28" cy="68" rx="4" ry="1.2" fill="#d4c8f5" opacity="0.4"/>
+          <ellipse cx="36" cy="68" rx="4" ry="1.2" fill="#d4c8f5" opacity="0.4"/>
+          <ellipse cx="28" cy="71" rx="3" ry="0.8" fill="#d4c8f5" opacity="0.25"/>
+          <ellipse cx="36" cy="71" rx="3" ry="0.8" fill="#d4c8f5" opacity="0.25"/>
+          <circle cx="14" cy="32" r="2" fill="#7f77dd" opacity="0.6"/>
+          <circle cx="50" cy="32" r="2" fill="#7f77dd" opacity="0.6"/>
+          <circle cx="12" cy="38" r="1.3" fill="#b8aae8" opacity="0.5"/>
+          <circle cx="52" cy="38" r="1.3" fill="#b8aae8" opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="bubble">
+        <p id="cold-thesis-question">...</p>
+      </div>
+    </div>
+    <textarea id="cold-thesis-answer" placeholder="Write your answer here... no wrong answers!" rows="4"></textarea>
+    <button class="start-btn" onclick="saveColdThesis()">Got it, let's analyze! →</button>
+  </div>
+
+  <!-- STEP 3: Guiding questions -->
+  <div class="step hidden" id="step-3">
+    <div class="text-display" id="text-display"></div>
+    <div class="qa-thread" id="qa-thread"></div>
+    <div class="owl-bubble" id="pip-question-bubble">
+      <div class="owl-wrap">
+        <svg class="owl" viewBox="0 0 64 80" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="32" cy="38" rx="20" ry="22" fill="#f3eeff" stroke="#d4c8f5" stroke-width="1.5"/>
+          <ellipse cx="32" cy="22" rx="17" ry="16" fill="#f3eeff" stroke="#d4c8f5" stroke-width="1.5"/>
+          <ellipse cx="23" cy="22" rx="7" ry="8" fill="#fff" stroke="#d4c8f5" stroke-width="1"/>
+          <ellipse cx="41" cy="22" rx="7" ry="8" fill="#fff" stroke="#d4c8f5" stroke-width="1"/>
+          <circle cx="23" cy="22" r="4.5" fill="#534ab7"/>
+          <circle cx="41" cy="22" r="4.5" fill="#534ab7"/>
+          <circle cx="24.5" cy="20.5" r="1.5" fill="#fff"/>
+          <circle cx="42.5" cy="20.5" r="1.5" fill="#fff"/>
+          <polygon points="32,28 29,31 35,31" fill="#f0bcd4" stroke="#d4c8f5" stroke-width="0.5"/>
+          <ellipse cx="20" cy="40" rx="5" ry="7" fill="#e8d8fc" stroke="#d4c8f5" stroke-width="1" transform="rotate(-10 20 40)"/>
+          <ellipse cx="44" cy="40" rx="5" ry="7" fill="#e8d8fc" stroke="#d4c8f5" stroke-width="1" transform="rotate(10 44 40)"/>
+          <rect x="26" y="57" width="5" height="6" rx="2" fill="#b8aae8" stroke="#d4c8f5" stroke-width="1"/>
+          <rect x="33" y="57" width="5" height="6" rx="2" fill="#b8aae8" stroke="#d4c8f5" stroke-width="1"/>
+          <ellipse cx="28" cy="64" rx="5" ry="2" fill="#c9bbf0" stroke="#d4c8f5" stroke-width="0.8"/>
+          <ellipse cx="36" cy="64" rx="5" ry="2" fill="#c9bbf0" stroke="#d4c8f5" stroke-width="0.8"/>
+          <ellipse cx="28" cy="64" rx="3" ry="1" fill="#7f77dd" opacity="0.5"/>
+          <ellipse cx="36" cy="64" rx="3" ry="1" fill="#7f77dd" opacity="0.5"/>
+          <ellipse cx="28" cy="68" rx="4" ry="1.2" fill="#d4c8f5" opacity="0.4"/>
+          <ellipse cx="36" cy="68" rx="4" ry="1.2" fill="#d4c8f5" opacity="0.4"/>
+          <ellipse cx="28" cy="71" rx="3" ry="0.8" fill="#d4c8f5" opacity="0.25"/>
+          <ellipse cx="36" cy="71" rx="3" ry="0.8" fill="#d4c8f5" opacity="0.25"/>
+          <circle cx="14" cy="32" r="2" fill="#7f77dd" opacity="0.6"/>
+          <circle cx="50" cy="32" r="2" fill="#7f77dd" opacity="0.6"/>
+          <circle cx="12" cy="38" r="1.3" fill="#b8aae8" opacity="0.5"/>
+          <circle cx="52" cy="38" r="1.3" fill="#b8aae8" opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="bubble" style="flex: 1;">
+        <div class="question-row">
+          <p id="pip-question" style="margin: 0; flex: 1;">...</p>
+          <button class="context-btn hidden" id="context-btn" onclick="toggleContext()">🔖 Need some context?</button>
+        </div>
+        <div class="context-card hidden" id="context-card">
+          <div class="context-title" id="context-title"></div>
+          <p class="context-text" id="context-text"></p>
+        </div>
+      </div>
+    </div>
+    <textarea id="user-answer" placeholder="Type your response here... take your time!" rows="5"></textarea>
+    <button class="start-btn" onclick="nextQuestion()">Next →</button>
+  </div>
+
+  <!-- STEP 4: Done -->
+  <div class="step hidden" id="step-4">
+    <div class="done-screen">
+      <div class="owl-wrap" style="margin: 0 auto 1rem;">
+        <svg class="owl" viewBox="0 0 64 80" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="32" cy="38" rx="20" ry="22" fill="#f3eeff" stroke="#d4c8f5" stroke-width="1.5"/>
+          <ellipse cx="32" cy="22" rx="17" ry="16" fill="#f3eeff" stroke="#d4c8f5" stroke-width="1.5"/>
+          <ellipse cx="23" cy="22" rx="7" ry="8" fill="#fff" stroke="#d4c8f5" stroke-width="1"/>
+          <ellipse cx="41" cy="22" rx="7" ry="8" fill="#fff" stroke="#d4c8f5" stroke-width="1"/>
+          <circle cx="23" cy="22" r="4.5" fill="#534ab7"/>
+          <circle cx="41" cy="22" r="4.5" fill="#534ab7"/>
+          <circle cx="24.5" cy="20.5" r="1.5" fill="#fff"/>
+          <circle cx="42.5" cy="20.5" r="1.5" fill="#fff"/>
+          <polygon points="32,28 29,31 35,31" fill="#f0bcd4" stroke="#d4c8f5" stroke-width="0.5"/>
+          <ellipse cx="20" cy="40" rx="5" ry="7" fill="#e8d8fc" stroke="#d4c8f5" stroke-width="1" transform="rotate(-10 20 40)"/>
+          <ellipse cx="44" cy="40" rx="5" ry="7" fill="#e8d8fc" stroke="#d4c8f5" stroke-width="1" transform="rotate(10 44 40)"/>
+          <rect x="26" y="57" width="5" height="6" rx="2" fill="#b8aae8" stroke="#d4c8f5" stroke-width="1"/>
+          <rect x="33" y="57" width="5" height="6" rx="2" fill="#b8aae8" stroke="#d4c8f5" stroke-width="1"/>
+          <ellipse cx="28" cy="64" rx="5" ry="2" fill="#c9bbf0" stroke="#d4c8f5" stroke-width="0.8"/>
+          <ellipse cx="36" cy="64" rx="5" ry="2" fill="#c9bbf0" stroke="#d4c8f5" stroke-width="0.8"/>
+          <ellipse cx="28" cy="64" rx="3" ry="1" fill="#7f77dd" opacity="0.5"/>
+          <ellipse cx="36" cy="64" rx="3" ry="1" fill="#7f77dd" opacity="0.5"/>
+          <ellipse cx="28" cy="68" rx="4" ry="1.2" fill="#d4c8f5" opacity="0.4"/>
+          <ellipse cx="36" cy="68" rx="4" ry="1.2" fill="#d4c8f5" opacity="0.4"/>
+          <ellipse cx="28" cy="71" rx="3" ry="0.8" fill="#d4c8f5" opacity="0.25"/>
+          <ellipse cx="36" cy="71" rx="3" ry="0.8" fill="#d4c8f5" opacity="0.25"/>
+          <circle cx="14" cy="32" r="2" fill="#7f77dd" opacity="0.6"/>
+          <circle cx="50" cy="32" r="2" fill="#7f77dd" opacity="0.6"/>
+          <circle cx="12" cy="38" r="1.3" fill="#b8aae8" opacity="0.5"/>
+          <circle cx="52" cy="38" r="1.3" fill="#b8aae8" opacity="0.5"/>
+        </svg>
+      </div>
+      <h2 class="done-title">Amazing work! 🎉</h2>
+      <p class="done-msg" id="done-msg"></p>
+      <div class="done-time">You finished in <strong id="final-time"></strong></div>
+      <button class="start-btn" onclick="window.location.href='index.html'">Go again →</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const tier = localStorage.getItem('tier') || 'middle';
+const skills = JSON.parse(localStorage.getItem('skills') || '[]');
+const wantsThesis = skills.includes('Writing a thesis');
+
+const texts = [
+  {
+    id: 'charlottes-web',
+    title: "Charlotte's Web",
+    author: 'E.B. White',
+    passage: "Wilbur didn't want food, he wanted love. He wanted a friend — someone who would play with him. But no one came, no one spoke to him, and he began to cry. The barn was very large. It was very old. It smelled of hay and it smelled of manure. It smelled of the perspiration of tired horses and the wonderful sweet breath of patient cows. Wilbur liked it.",
+    tiers: ['elementary'],
+    questions: {
+      elementary: [
+        { text: "How is Wilbur feeling? What words tell you that?", context: null },
+        { text: "What does Wilbur want more than food?", context: null },
+        { text: "Does Wilbur like the barn? What makes you think that?", context: null },
+        { text: "Why do you think Wilbur feels lonely?", context: null },
+        { text: "Now that we talked about it — what do you think the author wrote this for? Has your answer changed?", context: null }
+      ]
+    }
+  },
+  {
+    id: 'charlie-chocolate',
+    title: 'Charlie and the Chocolate Factory',
+    author: 'Roald Dahl',
+    passage: "Nobody ever went in, and nobody ever came out. Yet every day, the workers in the factory heard, coming from somewhere deep inside, the most wonderful music — a grand, booming, rushing, whispering sound, as though the great hidden chocolate river was flowing endlessly on and on. And the smell! Great swooping whiffs of chocolate came drifting out through the dark, mysterious air.",
+    tiers: ['elementary'],
+    questions: {
+      elementary: [
+        { text: "What is strange about the chocolate factory?", context: null },
+        { text: "What do the workers hear coming from inside?", context: null },
+        { text: "How does the factory make you feel? Why?", context: null },
+        { text: "Pick one word from the passage that you really like. Why did you pick it?", context: null },
+        { text: "Now that we talked about it — what do you think the author wrote this for? Has your answer changed?", context: null }
+      ]
+    }
+  },
+  {
+    id: 'matilda',
+    title: 'Matilda',
+    author: 'Roald Dahl',
+    passage: "Matilda was a little late in starting to read, but once she did, she read everything she could lay her hands on. By the age of three, Matilda had worked her way through all the books in the children's section and had begun wandering the shelves of the grown-up library. The books transported her into new worlds and introduced her to amazing people who lived exciting lives.",
+    tiers: ['elementary'],
+    questions: {
+      elementary: [
+        { text: "What does Matilda love to do?", context: null },
+        { text: "How is Matilda different from other kids her age?", context: null },
+        { text: "Have you ever felt like a book took you somewhere else? What was that like?", context: null },
+        { text: "Why do you think the author wants us to know Matilda read so many books?", context: null },
+        { text: "Now that we talked about it — what do you think the author wrote this for? Has your answer changed?", context: null }
+      ]
+    }
+  },
+  {
+    id: 'ivan',
+    title: 'The One and Only Ivan',
+    author: 'Katherine Applegate',
+    passage: "I am Ivan. I am a gorilla. It's not as easy as it looks. People call me the Freeway Gorilla. The Ape at Exit 8. The One and Only Ivan, Mighty Silverback. The names people give me are their way of making me small. I am not small.",
+    tiers: ['elementary'],
+    questions: {
+      elementary: [
+        { text: "Who is telling this story? What do we know about him?", context: null },
+        { text: "How does Ivan feel about the names people call him?", context: null },
+        { text: "Why do you think Ivan says 'I am not small' at the end?", context: null },
+        { text: "Pick one sentence from the passage that stands out to you. Why did you pick it?", context: null },
+        { text: "Now that we talked about it — what do you think the author wrote this for? Has your answer changed?", context: null }
+      ]
+    }
+  },
+  {
+    id: 'secret-garden',
+    title: 'The Secret Garden',
+    author: 'Frances Hodgson Burnett',
+    passage: "She never remembered seeing familiarly anything but the dark faces of her Ayah and the other native servants, and as they always obeyed her and gave her her own way in everything, because the Mem Sahib would be angry if she was disturbed by her crying, by the time she was six years old she was as tyrannical and selfish a little pig as ever lived. The young English governess who came to teach her to read and write disliked her so much that she gave up her place in three months, and when other governesses came to try to fill it they always went away in a shorter time than the first one.\n\nOne frightfully hot morning, when she was about nine years old, she awakened feeling very cross, and she became crosser still when she saw that the servant who stood by her bedside was not her Ayah. There was something mysterious in the air that morning. Nothing was done in its regular order and several of the native servants seemed missing, while those whom Mary saw slunk or hurried about with ashy and scared faces. But no one would tell her anything and her Ayah did not come.",
+    tiers: ['middle', 'upper', 'advanced'],
+    questions: {
+      middle: [
+        { text: "What kind of person is Mary at the start of this passage? What clues tell you that?", context: null },
+        { text: "Pick one word or sentence that stands out to you. Why did you notice it?", context: null },
+        { text: "How does Mary treat the people around her? Why do you think she acts this way?", context: null },
+        { text: "Something strange is happening around Mary but nobody tells her what. How does that make the mood of the passage feel?", context: null },
+        { text: "Write one sentence that describes what this passage is really about.", context: null }
+      ],
+      upper: [
+        { text: "How does Burnett use Mary's behavior to reveal something about the environment she grew up in?", context: null },
+        { text: "What is the effect of the servants being described as having 'ashy and scared faces' while Mary is focused only on herself?", context: null },
+        { text: "What does Mary's reaction to not having her Ayah tell us about how she understands the world around her?", context: null },
+        { text: "How does Burnett build a sense of unease in this passage without directly telling us what is wrong?", context: null },
+        { text: "Now that we've worked through it together — try writing your claim one more time. How has your thinking changed?", context: null }
+      ],
+      advanced: [
+        { text: "This passage is set in colonial India. How does Burnett use Mary's upbringing to critique or reflect the values of British colonialism without explicitly naming them?", context: { title: "British Colonialism", text: "British colonialism was a period lasting from the 1600s to the mid-1900s during which Britain controlled large parts of the world, including India. It came with strong beliefs about racial and cultural superiority that shaped social structures, daily life, and the relationships between different groups of people." } },
+        { text: "The servants are described only through Mary's perspective. What is the effect of that narrative choice, and what does it reveal about whose story is centered?", context: null },
+        { text: "How does Burnett use Mary's obliviousness as a literary device to create dramatic irony for the reader?", context: null },
+        { text: "What argument could you make about how power, privilege, and isolation shape a child's moral development based on this passage alone?", context: null },
+        { text: "Now that we've worked through it together — try writing your claim one more time. How has your thinking changed?", context: { title: "British Colonialism", text: "British colonialism was a period lasting from the 1600s to the mid-1900s during which Britain controlled large parts of the world, including India. It came with strong beliefs about racial and cultural superiority that shaped social structures, daily life, and the relationships between different groups of people." } }
+      ]
+    }
+  },
+  {
+    id: 'alice',
+    title: "Alice's Adventures in Wonderland",
+    author: 'Lewis Carroll',
+    passage: "Alice was beginning to get very tired of sitting by her sister on the bank and of having nothing to do; once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, \"and what is the use of a book,\" thought Alice, \"without pictures or conversation?\" So she was considering whether the pleasure of making a daisy-chain would be worth the trouble of getting up and picking the daisies, when suddenly a White Rabbit with pink eyes ran close by her.\n\nIn another moment down went Alice after it, never once considering how in the world she was to get out again. The rabbit-hole went straight on like a tunnel for some way, and then dipped suddenly down, so suddenly that Alice had not a moment to think about stopping herself before she found herself falling down a very deep well.\n\nDown, down, down. Would the fall never come to an end! Suddenly, thump! down she came upon a heap of sticks and dry leaves and the fall was over. Alice was not a bit hurt and she jumped up on to her feet in a moment.",
+    tiers: ['middle', 'upper', 'advanced'],
+    questions: {
+      middle: [
+        { text: "Why do you think Alice follows the rabbit without thinking? What does that tell us about her?", context: null },
+        { text: "What words does Carroll use to describe the fall? How do they make you feel as a reader?", context: null },
+        { text: "How does Alice feel at the end of the passage? Does her reaction surprise you?", context: null },
+        { text: "What kind of story do you think this is going to be based on just this opening? What clues tell you that?", context: null },
+        { text: "Write one sentence about what you think Carroll wants us to feel reading this.", context: null }
+      ],
+      upper: [
+        { text: "Alice dismisses her sister's book because it has no pictures or conversations. What does this tell us about Alice as a character and what Carroll might be saying about curiosity?", context: null },
+        { text: "How does Carroll use pacing — the way the fall slows down with 'Down, down, down' — to create a specific effect on the reader?", context: null },
+        { text: "Alice never considers 'how in the world she was to get out again.' What does this detail reveal about childhood versus adult thinking?", context: null },
+        { text: "How does Carroll establish Wonderland as a place that operates by different rules than the real world just within this one passage?", context: null },
+        { text: "Now that we've worked through it together — try writing your claim one more time. How has your thinking changed?", context: null }
+      ],
+      advanced: [
+        { text: "How does the passage use the tension between Alice's passivity and her sudden impulsive action to establish a theme?", context: null },
+        { text: "The fall is described as dreamlike and without consequence — Alice lands unhurt. What argument can you make about what Carroll is saying about imagination or escapism?", context: { title: "Escapism", text: "Escapism refers to the tendency to seek distraction or relief from reality by retreating into imagination, fantasy, or entertainment. Philosophers and writers have long debated whether escapism is a healthy coping mechanism or an avoidance of real life — and literature has often been seen as one of its primary vehicles." } },
+        { text: "How does Carroll use Alice's interiority — her thoughts rather than actions — to build the world of the story?", context: null },
+        { text: "What argument can you make about what this passage says about the relationship between boredom and adventure?", context: null },
+        { text: "Now that we've worked through it together — try writing your claim one more time. How has your thinking changed?", context: null }
+      ]
+    }
+  },
+  {
+    id: 'little-women',
+    title: 'Little Women',
+    author: 'Louisa May Alcott',
+    passage: "\"Christmas won't be Christmas without any presents,\" grumbled Jo, lying on the rug. \"It's so dreadful to be poor!\" sighed Meg, looking down at her old dress. \"I don't think it's fair for some girls to have lots of pretty things, and other girls nothing at all,\" added little Amy, with an injured sniff. \"We've got father and mother, and each other, anyhow,\" said Beth, contentedly, from her corner.\n\nNobody spoke for a minute; then Meg said in an altered tone — \"You know the reason mother proposed not having any presents this Christmas, was because it's going to be a hard winter for every one; and she thinks we ought not to spend money for pleasure, when our men are suffering so in the army. We can't do much, but we can make our little sacrifices, and ought to do it gladly.\"\n\n\"But I don't think the little we should spend would do any good,\" said Jo. \"We've each got a dollar... I do want to buy books for myself; I've wanted it so long.\"",
+    tiers: ['middle', 'upper', 'advanced'],
+    questions: {
+      middle: [
+        { text: "How does each sister feel about not having presents? Are their feelings all the same?", context: null },
+        { text: "Which sister do you agree with most and why?", context: null },
+        { text: "How does Meg change the mood of the conversation when she explains why their mother suggested no presents?", context: null },
+        { text: "What does this passage tell you about what this family values?", context: null },
+        { text: "Write one sentence about what you think this passage is really about — not just presents, but something deeper.", context: null }
+      ],
+      upper: [
+        { text: "Each sister responds to poverty differently. What does each response reveal about her personality and values?", context: null },
+        { text: "How does Alcott use dialogue instead of description to reveal character? What is the effect of that choice?", context: null },
+        { text: "Meg reminds her sisters of their mother's reasoning. How does this shift the tone and what does it reveal about Meg's role in the family?", context: null },
+        { text: "The sisters end up deciding to spend their money on themselves anyway. What does Alcott want us to think about that decision?", context: null },
+        { text: "Now that we've worked through it together — try writing your claim one more time. How has your thinking changed?", context: null }
+      ],
+      advanced: [
+        { text: "This novel was written during the Civil War era. How does the mention of 'our men suffering in the army' complicate what might otherwise be a simple story about girls wanting presents?", context: { title: "The Civil War Era", text: "The American Civil War (1861-1865) was fought between the Northern Union states and the Southern Confederate states, largely over the issue of slavery. The war caused widespread economic hardship across the country. Women on the home front were expected to sacrifice personal comfort and desire in support of the war effort, taking on new domestic and social responsibilities while the men were away." } },
+        { text: "Alcott gives each sister a distinct voice in a very short passage. What argument can you make about how she uses the ensemble of sisters to represent different ways people cope with sacrifice?", context: { title: "About Little Women", text: "Little Women follows four sisters — Meg, Jo, Beth, and Amy March — growing up in Massachusetts during the Civil War while their father is away. The novel explores themes of poverty, gender roles, ambition, and what it means to be a 'good woman' in 19th century America. Jo is widely believed to be based on author Louisa May Alcott herself." } },
+        { text: "Jo says 'I do want to buy books for myself' — and Jo is widely understood to be Alcott's self-insert character. How does that detail add another layer of meaning?", context: null },
+        { text: "What does this passage argue about the tension between personal desire and collective sacrifice? How does Alcott avoid making it feel preachy?", context: null },
+        { text: "Now that we've worked through it together — try writing your claim one more time. How has your thinking changed?", context: { title: "The Civil War Era", text: "The American Civil War (1861-1865) was fought between the Northern Union states and the Southern Confederate states, largely over the issue of slavery. The war caused widespread economic hardship across the country. Women on the home front were expected to sacrifice personal comfort and desire in support of the war effort." } }
+      ]
+    }
+  },
+  {
+    id: 'gatsby',
+    title: 'The Great Gatsby',
+    author: 'F. Scott Fitzgerald',
+    passage: "In my younger and more vulnerable years my father gave me some advice that I've been turning over in my mind ever since. \"Whenever you feel like criticising any one,\" he told me, \"just remember that all the people in this world haven't had the advantages that you've had.\"\n\nHe didn't say any more, but I understood that he meant a great deal more than that. In consequence, I'm inclined to reserve all judgments, a habit that has opened up many curious natures to me and also made me the victim of not a few veteran bores. Reserving judgments is a matter of infinite hope.\n\nOnly Gatsby, the man who gives his name to this book, was exempt from my reaction — Gatsby, who represented everything for which I have an unaffected scorn. If personality is an unbroken series of successful gestures, then there was something gorgeous about him…",
+    tiers: ['middle', 'upper', 'advanced'],
+    questions: {
+      middle: [
+        { text: "What advice did Nick's father give him? Do you think it's good advice?", context: null },
+        { text: "Nick says he tries not to judge people but then admits he has a limit. Does that seem fair to you?", context: null },
+        { text: "How does Nick describe Gatsby? Does he seem to like him or not? How can you tell?", context: null },
+        { text: "What kind of person do you think Nick is based on this passage?", context: null },
+        { text: "Write one sentence about what you think Nick's father's advice really means.", context: null }
+      ],
+      upper: [
+        { text: "Nick claims to 'reserve all judgments' but spends this entire passage making judgments. What is the effect of that contradiction?", context: null },
+        { text: "What does Fitzgerald reveal about privilege through Nick's father's advice? Who is that advice really available to?", context: null },
+        { text: "How does Fitzgerald build mystery around Gatsby in just a few sentences?", context: null },
+        { text: "Nick says Gatsby 'represented everything for which I have an unaffected scorn' but also calls him 'gorgeous.' How does holding both feelings create complexity?", context: null },
+        { text: "Now that we've worked through it together — try writing your claim one more time. How has your thinking changed?", context: null }
+      ],
+      advanced: [
+        { text: "Nick presents himself as a reliable, non-judgmental narrator but immediately undermines that claim. What argument can you make about Fitzgerald's choice to give us an unreliable narrator?", context: { title: "Key Terms", text: "Moral ambiguity refers to situations or characters that cannot be clearly labeled as good or bad — where right and wrong are blurred. Materialism is the value placed on money, possessions, and status as measures of success. The American Dream is the belief that anyone can achieve success through hard work — though many writers have questioned whether this ideal is truly available to everyone equally." } },
+        { text: "The father's advice is framed as wisdom. But what is Fitzgerald actually critiquing about that kind of thinking?", context: null },
+        { text: "Fitzgerald describes Gatsby as exempt from Nick's scorn despite representing 'everything for which I have an unaffected scorn.' What does this reveal about the American Dream as Fitzgerald sees it?", context: { title: "About The Great Gatsby", text: "The Great Gatsby is set in New York in the 1920s, a period of enormous wealth and excess known as the Jazz Age. Nick Carraway has moved to New York and finds himself surrounded by extraordinarily wealthy people. Jay Gatsby, his mysterious neighbor, is famous for throwing lavish parties but his origins remain unclear. The novel is widely read as a critique of the American Dream and the hollowness of wealth." } },
+        { text: "How does Fitzgerald use the very first page to establish the themes of judgment, privilege, and moral ambiguity that run through the entire book?", context: null },
+        { text: "Now that we've worked through it together — try writing your claim one more time. How has your thinking changed?", context: { title: "Key Terms", text: "Moral ambiguity refers to situations or characters that cannot be clearly labeled as good or bad — where right and wrong are blurred. Materialism is the value placed on money, possessions, and status as measures of success. The American Dream is the belief that anyone can achieve success through hard work — though many writers have questioned whether this ideal is truly available to everyone equally." } }
+      ]
+    }
+  }
+];
+
+let currentQ = 0;
+let answers = [];
+let coldThesis = '';
+let seconds = 0;
+let timerInterval = null;
+let activeQuestions = [];
+let selectedText = null;
+
+function pickText() {
+  let seen = JSON.parse(localStorage.getItem('seenTexts') || '[]');
+  const available = texts.filter(t => t.tiers.includes(tier));
+  const unseen = available.filter(t => !seen.includes(t.id));
+  if (unseen.length === 0) {
+    localStorage.setItem('seenTexts', '[]');
+    return available[0];
+  }
+  return unseen[Math.floor(Math.random() * unseen.length)];
+}
+
+window.addEventListener('DOMContentLoaded', function() {
+  selectedText = pickText();
+  document.getElementById('text-preview').textContent = selectedText.passage;
+  document.getElementById('text-preview-2').textContent = selectedText.passage;
+  document.getElementById('text-source').textContent = '— ' + selectedText.title + ' by ' + selectedText.author;
+
+  if (tier === 'elementary') {
+    document.getElementById('cold-thesis-question').textContent =
+      "Before we start — just from reading the passage, what do you think the author wrote this for? Just your best guess in one sentence, no wrong answers!";
+  } else {
+    document.getElementById('cold-thesis-question').textContent =
+      "Before we dive in, read the passage and try writing a claim in one sentence — what do you think the author is trying to say? Don't worry about being perfect, just give it a shot!";
+  }
+});
+
+function goToStep2() {
+  if (wantsThesis) {
+    document.getElementById('step-1').classList.add('hidden');
+    document.getElementById('step-2').classList.remove('hidden');
+  } else {
+    startQuestions();
+  }
+}
+
+function saveColdThesis() {
+  const answer = document.getElementById('cold-thesis-answer').value.trim();
+  if (answer === '') {
+    alert("Give it your best shot — even just one sentence!");
+    return;
+  }
+  coldThesis = answer;
+  startQuestions();
+}
+
+function startQuestions() {
+  activeQuestions = selectedText.questions[tier];
+  document.getElementById('text-display').textContent = selectedText.passage;
+  document.getElementById('step-1').classList.add('hidden');
+  document.getElementById('step-2').classList.add('hidden');
+  document.getElementById('step-3').classList.remove('hidden');
+  showQuestion(0);
+  startTimer();
+
+  const seen = JSON.parse(localStorage.getItem('seenTexts') || '[]');
+  if (!seen.includes(selectedText.id)) {
+    seen.push(selectedText.id);
+    localStorage.setItem('seenTexts', JSON.stringify(seen));
+  }
+  localStorage.setItem('currentText', selectedText.title);
+}
+
+function showQuestion(index) {
+  const q = activeQuestions[index];
+  document.getElementById('pip-question').textContent = q.text;
+  const contextBtn = document.getElementById('context-btn');
+  const contextCard = document.getElementById('context-card');
+  if (q.context) {
+    contextBtn.classList.remove('hidden');
+    document.getElementById('context-title').textContent = q.context.title;
+    document.getElementById('context-text').textContent = q.context.text;
+  } else {
+    contextBtn.classList.add('hidden');
+  }
+  contextCard.classList.add('hidden');
+}
+
+function toggleContext() {
+  document.getElementById('context-card').classList.toggle('hidden');
+}
+
+function nextQuestion() {
+  const answerBox = document.getElementById('user-answer');
+  const answer = answerBox.value.trim();
+  if (answer === '') {
+    alert("Don't leave Pip hanging! Write something, even just a few words.");
+    return;
+  }
+  answers.push({ question: activeQuestions[currentQ].text, answer });
+  const thread = document.getElementById('qa-thread');
+  const entry = document.createElement('div');
+  entry.className = 'thread-entry';
+  entry.innerHTML =
+    '<div class="thread-q">Pip asked: <em>' + activeQuestions[currentQ].text + '</em></div>' +
+    '<div class="thread-a">You wrote: ' + answer + '</div>';
+  thread.appendChild(entry);
+  answerBox.value = '';
+  currentQ++;
+  if (currentQ < activeQuestions.length) {
+    showQuestion(currentQ);
+    document.getElementById('pip-question-bubble').scrollIntoView({ behavior: 'smooth' });
+  } else {
+    finishPractice();
+  }
+}
+
+function startTimer() {
+  timerInterval = setInterval(function() {
+    seconds++;
+    const mins = String(Math.floor(seconds / 60)).padStart(2, '0');
+    const secs = String(seconds % 60).padStart(2, '0');
+    document.getElementById('timer').textContent = mins + ':' + secs;
+  }, 1000);
+}
+
+function stopTimer() { clearInterval(timerInterval); }
+
+function getFormattedTime() {
+  const mins = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+  if (mins === 0) return secs + ' seconds';
+  if (secs === 0) return mins + ' minutes';
+  return mins + ' min ' + secs + ' sec';
+}
+
+function finishPractice() {
+  stopTimer();
+
+  const sessionHistory = JSON.parse(localStorage.getItem('sessionHistory') || '[]');
+  const finalAnswer = answers[answers.length - 1] ? answers[answers.length - 1].answer : '';
+  sessionHistory.push({
+    date: new Date().toISOString(),
+    text: selectedText.title,
+    time: getFormattedTime(),
+    claim: finalAnswer,
+    coldThesis: coldThesis,
+    tier: tier
+  });
+  localStorage.setItem('sessionHistory', JSON.stringify(sessionHistory));
+
+  document.getElementById('step-3').classList.add('hidden');
+  document.getElementById('step-4').classList.remove('hidden');
+
+  let doneMsg = '';
+  if (coldThesis && finalAnswer) {
+    doneMsg = 'You started with: "' + coldThesis + '"\n\nAfter working through it, you wrote: "' + finalAnswer + '"\n\nLook how far your thinking came!';
+  } else {
+    doneMsg = finalAnswer ? 'Here\'s the claim you built: "' + finalAnswer + '"' : "You worked through the whole analysis — that takes real skill!";
+  }
+
+  document.getElementById('done-msg').textContent = doneMsg;
+  document.getElementById('final-time').textContent = getFormattedTime();
+}
+</script>
+
+</body>
+</html>
